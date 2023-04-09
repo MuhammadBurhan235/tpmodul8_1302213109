@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace tpmodul8_1302213109
 {
     public class Config
-    {
+    {   
         public string satuan_suhu { get; set; }
         public int batas_hari_demam { get; set; }
         public string pesan_ditolak { get; set; }
@@ -71,7 +72,6 @@ namespace tpmodul8_1302213109
         }
         public bool IsInputValid(double suhu, int hariDemam)
         {
-            // Memeriksa range suhu sesuai satuan suhu yang digunakan
             if (config.satuan_suhu == "celcius")
             {
                 if (suhu < 36.5 || suhu > 37.5)
@@ -86,8 +86,6 @@ namespace tpmodul8_1302213109
                     return false;
                 }
             }
-
-            // Memeriksa nilai hari demam
             if (hariDemam >= config.batas_hari_demam)
             {
                 return false;
